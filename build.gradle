@@ -1,0 +1,43 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.2.3'
+	id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'org.basic'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '17'
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version: '2.3.0'
+	compileOnly 'org.projectlombok:lombok'
+	//developmentOnly 'org.springframework.boot:spring-boot-docker-compose'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation(platform("io.opentelemetry:opentelemetry-bom:1.35.0"));
+	implementation("io.opentelemetry:opentelemetry-api");
+	implementation("io.opentelemetry:opentelemetry-sdk");
+	implementation("io.opentelemetry:opentelemetry-exporter-logging");
+	implementation("io.opentelemetry.semconv:opentelemetry-semconv:1.23.1-alpha");
+	implementation("io.opentelemetry:opentelemetry-sdk-extension-autoconfigure");
+	//implementation("io.opentelemetry:opentelemetry-sdk-extension-autoconfigure:1.26.0-alpha");
+	implementation("io.opentelemetry:opentelemetry-sdk-extension-jaeger-remote-sampler");
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
