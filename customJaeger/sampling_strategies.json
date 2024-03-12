@@ -1,7 +1,7 @@
 {
   "service_strategies": [
     {
-      "service": "foobar",
+      "service": "basic-rest-service",
       "type": "ratelimiting",
       "param": 2
     }

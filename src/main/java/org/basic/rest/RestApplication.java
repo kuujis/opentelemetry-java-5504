@@ -35,7 +35,7 @@ public class RestApplication {
 
 		JaegerRemoteSampler sampler = JaegerRemoteSampler.builder()
 				.setServiceName("basic-rest-service")
-				//gets set to default 172.17.0.2 if deployed before the test app
+				//gets set to default 172.17.0.2 if deployed before the test app in docker desktop
 				.setEndpoint("http://172.17.0.2:14250")
 				.build();
 
